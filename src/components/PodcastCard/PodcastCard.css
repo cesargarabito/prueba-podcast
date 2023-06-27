@@ -1,0 +1,31 @@
+.card {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .card-content {
+    margin-top: 12px;
+  }
+  
+  .card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .card-author {
+    font-size: 14px;
+    color: #888;
+    margin: 8px 0 0;
+  }
+  
