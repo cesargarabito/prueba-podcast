@@ -2,5 +2,30 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 5px;
+  }
+  .filter-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+    gap: 10px;
+  }
+  .filter-input {
+    width: 30px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid navy;
+    border-radius: 4px;
+    transition: width 0.3s ease-in-out;
   }
   
+  .filter-input:focus {
+    width: 200px;
+  }
+
+  .filter-text {
+    background-color: navy;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+  }
