@@ -1,15 +1,15 @@
 
 import './App.css';
 import Main from './components/Main/Main';
+import { Routes, Route, Router } from 'react-router-dom';
+import SideBar from './components/SideBar/SideBar';
 
 function App() {
   return (
-    <div className="App">
-      <h1 style={{ color: "navy", textAlign: "left", marginBottom: '0' }}>Podcast</h1>
-      <hr />
-      <br></br>
-      <Main />
-    </div>
+    <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path='/podcast/:podcastId' element={ <SideBar />} />
+    </Routes>
   );
 }
 

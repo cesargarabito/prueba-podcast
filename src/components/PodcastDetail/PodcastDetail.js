@@ -25,11 +25,7 @@ function Main() {
     fetchData();
   }, []);
   return (
-
-    <div style={{ margin: '2px'}}>
-      <h1 style={{ color: "navy", textAlign: "left", marginBottom: '0' }}>Podcast</h1>
-      <hr />
-      <br></br>
+    <div>
     <div className="filter-container">
     <div className="filter-text">
           {filteredPodcasts.length} 
@@ -45,11 +41,10 @@ function Main() {
       </div>
     <div className="card-container">
       {filteredPodcasts.map((podcast, index) => {
-        console.log(podcast.id.attributes['im:id']);
+        console.log(podcast);
         return (
-          <PodcastCard 
+          <PodcastCard
             key={index}
-            id={podcast.id.attributes['im:id']}
             image={podcast["im:image"][0].label}
             title={podcast.title.label}
             author={podcast["im:artist"].label}

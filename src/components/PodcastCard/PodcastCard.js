@@ -1,9 +1,9 @@
 import React from "react";
 import "./PodcastCard.css";
 
-const PodcastCard = ({ title, author, image }) => {
+const PodcastCard = ({ title, author, image, id }) => {
   return (
-    <div className="card">
+    <div className="card" onClick={id}>
       <img src={image} alt="Podcast" className="card-image" />
       <div className="card-content">
         <h3 className="card-title">{title}</h3>
@@ -11,6 +11,7 @@ const PodcastCard = ({ title, author, image }) => {
           <span style={{ fontStyle: "italic", opacity: 0.5 }}>Author:</span>{" "}
           {author}
         </p>
+        <p className="card-description"></p>
       </div>
     </div>
   );
