@@ -1,7 +1,16 @@
 
 import React from 'react';
+import { useContext } from "react";
+import { PodcastsContext } from "../Contexts/PodcastContext";
+import { useNavigate } from 'react-router-dom';
 
 const EpisodeSection = ({ episodes }) => {
+  const navigate = useNavigate()
+  const { setSelectedEpisodes, selectedEpisodes } = useContext(PodcastsContext);
+  const handleSelectedEpisode = (selectedEpisode) => {
+    setSelectedEpisodes(selectedEpisode);
+    navigate(`/podcast/${selectedEpisode.podcastId}/episode/${selectedEpisode.id}`)
+  };
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const month = date.getMonth() + 1;
@@ -35,7 +44,8 @@ const EpisodeSection = ({ episodes }) => {
           
         {episodes.map((episode, index) => (
             <tr key={index} style={{ backgroundColor: index % 2 === 0 ? 'rgba(128, 128, 128, 0.2)' : 'white' }}>
-              <td style={{ color: 'navy' }}>{episode.trackName}</td>
+              <td onClick={() => {handleSelectedEpisode({ podcastId: episode.collectionId, id: episode.trackId
+})}} style={{ color: 'navy' }}>{episode.trackName}</td>
               <td style={{ marginRight: '20px'}}>{formatDate(episode.releaseDate)}</td>
               <td>{formatDuration(episode.trackTimeMillis)}</td>
             </tr>

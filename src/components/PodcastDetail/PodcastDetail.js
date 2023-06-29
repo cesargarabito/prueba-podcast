@@ -20,6 +20,7 @@ const PodcastDetail = () => {
       );
       const parseData = JSON.parse(response.data.contents);
       const results = parseData.results;
+      console.log(results)
       setEpisodes(results);
     } catch (error) {
       console.log(error);
