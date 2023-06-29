@@ -1,59 +1,43 @@
-import React, { useEffect, useState } from "react";
-import PodcastCard from "../PodcastCard/PodcastCard";
-import "./Main.css";
+import axios from "axios";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import React from "react";
+import SideBar from "../SideBar/SideBar";
+import EpisodeSection from "../EpisodesSection/EpisodeSection";
+import { useContext } from "react";
+import { PodcastsContext } from "../Contexts/PodcastContext";
+import Header from "../Header";
 
-function Main() {
-  const [podcasts, setPodcasts] = useState([]);
-  const [filterText, setFilterText] = useState("");
-
-  const fetchData = () => {
-    fetch(
-      "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json"
-    )
-      .then((response) => response.json())
-      .then((data) => setPodcasts(data.feed.entry));
+const PodcastDetail = () => {
+  let { podcastId } = useParams();
+  const { episodes, setEpisodes } = useContext(PodcastsContext);
+  const episodesList = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.allorigins.win/get?url=${encodeURIComponent(
+          `https://itunes.apple.com/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode&limit=20`
+        )}`
+      );
+      const parseData = JSON.parse(response.data.contents);
+      const results = parseData.results;
+      setEpisodes(results);
+    } catch (error) {
+      console.log(error);
+    }
   };
-  const handleFilterChange = (event) => {
-    setFilterText(event.target.value);
-  };
-  const filteredPodcasts = podcasts.filter((podcast) =>
-    podcast.title.label.toLowerCase().includes(filterText.toLowerCase()) ||
-    podcast["im:artist"].label.toLowerCase().includes(filterText.toLowerCase())
-  );
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    episodesList();
+  }, [podcastId]);
   return (
     <div>
-    <div className="filter-container">
-    <div className="filter-text">
-          {filteredPodcasts.length} 
-        </div>
-        <input
-          type="text"
-          placeholder="Filtrar por título o autor"
-          className="filter-input"
-          value={filterText}
-          onChange={handleFilterChange}
-        />
-        
+      <Header />
+      <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+        <SideBar />
+        <EpisodeSection episodes={episodes} />
       </div>
-    <div className="card-container">
-      {filteredPodcasts.map((podcast, index) => {
-        console.log(podcast);
-        return (
-          <PodcastCard
-            key={index}
-            image={podcast["im:image"][0].label}
-            title={podcast.title.label}
-            author={podcast["im:artist"].label}
-          />
-        );
-      })}
-    </div>
     </div>
   );
-}
+};
 
-export default Main;
+export default PodcastDetail;
