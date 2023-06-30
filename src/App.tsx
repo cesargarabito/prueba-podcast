@@ -4,6 +4,8 @@ import { Routes, Route } from "react-router-dom";
 import { PodcastsProvider } from "./components/Contexts/PodcastContext";
 import PodcastDetail from "./components/PodcastDetail/PodcastDetail";
 import EpisodeDetail from "./components/EpisodeDetail/EpisodeDetail";
+//import Loading from "./components/Loading.tsx";
+import React from "react";
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
           element={<EpisodeDetail />}
         />
       </Routes>
+      {/* //<Loading /> */}
     </PodcastsProvider>
   );
 }

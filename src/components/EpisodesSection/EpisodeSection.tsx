@@ -5,21 +5,21 @@ import { useNavigate } from "react-router-dom";
 
 const EpisodeSection = ({ episodes }) => {
   const navigate = useNavigate();
-  const { setSelectedEpisodes, selectedEpisodes } = useContext(PodcastsContext);
-  const handleSelectedEpisode = (selectedEpisode) => {
+  const { setSelectedEpisodes } = useContext(PodcastsContext);
+  const handleSelectedEpisode = (selectedEpisode: any) => {
     setSelectedEpisodes(selectedEpisode);
     navigate(
       `/podcast/${selectedEpisode.podcastId}/episode/${selectedEpisode.id}`
     );
   };
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const year = date.getFullYear();
     return `${month}/${day}/${year}`;
   };
-  const formatDuration = (durationInMillis) => {
+  const formatDuration = (durationInMillis: number) => {
     const totalSeconds = Math.floor(durationInMillis / 1000);
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -53,7 +53,7 @@ const EpisodeSection = ({ episodes }) => {
             </tr>
           </thead>
           <tbody>
-            {episodes.map((episode, index) => (
+            {episodes.map((episode: any, index: number) => (
               <tr
                 key={index}
                 style={{
@@ -71,7 +71,7 @@ const EpisodeSection = ({ episodes }) => {
                       episodeUrl: episode.episodeUrl
                     });
                   }}
-                  style={{ color: "navy" }}
+                  style={{ color: "navy", cursor: 'pointer' }}
                 >
                   {episode.trackName}
                 </td>

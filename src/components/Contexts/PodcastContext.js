@@ -7,6 +7,7 @@ export const PodcastsProvider = ({ children }) => {
   const [selectedPodcasts, setSelectedPodcasts] = useState({});
   const [ episodes, setEpisodes ] = useState([]);
   const [selectedEpisodes, setSelectedEpisodes] = useState({});
+  
   const fetchData = () => {
     fetch(
       "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json"
