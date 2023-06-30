@@ -8,7 +8,7 @@ import React from "react";
 const SideBar = () => {
   const navigate = useNavigate();
   const { selectedPodcasts } = useContext(PodcastsContext);
-  const [localPodcast, setLocalPodcast] = useState<{ [key: string]: any }>({});
+  const [localPodcast, setLocalPodcast] = useState({});
   let { podcastId } = useParams();
   const handleClick = () => {
     navigate(`/podcast/${podcastId}`)

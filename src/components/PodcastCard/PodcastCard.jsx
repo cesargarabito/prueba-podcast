@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const PodcastCard = ({ title, author, image, summary, id }) => {
   const navigate = useNavigate();
   const { setSelectedPodcasts } = useContext(PodcastsContext);
-  const handleSelectedPodcast = (selectedPodcast: any) => {
+  const handleSelectedPodcast = (selectedPodcast) => {
     setSelectedPodcasts(selectedPodcast);
     navigate(`/podcast/${selectedPodcast.id}`);
   };

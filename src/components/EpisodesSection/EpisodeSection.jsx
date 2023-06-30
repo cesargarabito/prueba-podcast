@@ -6,20 +6,20 @@ import { useNavigate } from "react-router-dom";
 const EpisodeSection = ({ episodes }) => {
   const navigate = useNavigate();
   const { setSelectedEpisodes } = useContext(PodcastsContext);
-  const handleSelectedEpisode = (selectedEpisode: any) => {
+  const handleSelectedEpisode = (selectedEpisode) => {
     setSelectedEpisodes(selectedEpisode);
     navigate(
       `/podcast/${selectedEpisode.podcastId}/episode/${selectedEpisode.id}`
     );
   };
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString) => {
     const date = new Date(dateString);
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const year = date.getFullYear();
     return `${month}/${day}/${year}`;
   };
-  const formatDuration = (durationInMillis: number) => {
+  const formatDuration = (durationInMillis) => {
     const totalSeconds = Math.floor(durationInMillis / 1000);
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -53,7 +53,7 @@ const EpisodeSection = ({ episodes }) => {
             </tr>
           </thead>
           <tbody>
-            {episodes.map((episode: any, index: number) => (
+            {episodes.map((episode, index) => (
               <tr
                 key={index}
                 style={{

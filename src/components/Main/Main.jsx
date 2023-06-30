@@ -9,11 +9,11 @@ function Main() {
   const { podcasts, fetchData } = useContext(PodcastsContext);
   const [filterText, setFilterText] = useState("");
 
-  const handleFilterChange = (event: any) => {
+  const handleFilterChange = (event) => {
     setFilterText(event.target.value);
   };
   const filteredPodcasts = podcasts.filter(
-    (podcast: any) =>
+    (podcast) =>
       podcast.title.label.toLowerCase().includes(filterText.toLowerCase()) ||
       podcast["im:artist"].label
         .toLowerCase()
@@ -37,7 +37,7 @@ function Main() {
         />
       </div>
       <div className="card-container">
-        {filteredPodcasts.map((podcast: any, index: number) => {
+        {filteredPodcasts.map((podcast, index) => {
           return (
             <PodcastCard
               key={index}
