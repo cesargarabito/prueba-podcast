@@ -1,28 +1,39 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PodcastsContext } from "../Contexts/PodcastContext";
 import "./SideBar.css";
 
 const SideBar = () => {
+ 
   const { selectedPodcasts, setSelectedPodcasts } = useContext(PodcastsContext);
+  const [ localPodcast, setLocalPodcast ] = useState({});
+debugger
+  useEffect(() => {
+    // Guardar el objeto selectedPodcasts en localStorage
+    if(selectedPodcasts){
+      localStorage.setItem("selectedPodcasts", JSON.stringify(selectedPodcasts));
+    }
+    
+    debugger
+  }, [selectedPodcasts]);
 
-  // useEffect(() => {
-  //   // Guardar el objeto selectedPodcasts en localStorage
-  //   localStorage.setItem("selectedPodcasts", JSON.stringify(selectedPodcasts));
-  // }, [selectedPodcasts]);
+  useEffect(() => {
+    // Recuperar el objeto selectedPodcasts de localStorage al cargar el componente
+    const storedSelectedPodcasts = localStorage.getItem("selectedPodcasts");
 
-  // useEffect(() => {
-  //   // Recuperar el objeto selectedPodcasts de localStorage al cargar el componente
-  //   const storedSelectedPodcasts = localStorage.getItem("selectedPodcasts");
-  //   if (storedSelectedPodcasts) {
-  //     setSelectedPodcasts(JSON.parse(storedSelectedPodcasts));
-  //   }
-  // }, []);
+    console.log(JSON.parse(storedSelectedPodcasts))
+    debugger
+    if (storedSelectedPodcasts) {
+      debugger
+      setLocalPodcast(JSON.parse(storedSelectedPodcasts));
+
+    }
+  }, []);
 
   return (
     <div className="card">
       <div className="card-content-sidebar">
         <img
-          src={selectedPodcasts.image}
+          src={selectedPodcasts.image || localPodcast.image}
           alt="Podcast"
           className="card-image-sidebar"
         />
@@ -54,7 +65,7 @@ const SideBar = () => {
         <div>
           <h4 style={{ textAlign: "left" }}>Description:</h4>
           <p style={{ textAlign: "left", fontStyle: "italic", opacity: 0.5 }}>
-            {selectedPodcasts.description}
+            {selectedPodcasts.summary}
           </p>
         </div>
       </div>

@@ -1,0 +1,26 @@
+.episode-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .episode-detail-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Estilos para el espacio entre el SideBar y EpisodeView */
+  .side-bar {
+    margin-right: 20px;
+  }
+  
+  .episode-view {
+    flex: 1;
+  }
+  
+  /* Otros estilos personalizados según tus necesidades */
+  

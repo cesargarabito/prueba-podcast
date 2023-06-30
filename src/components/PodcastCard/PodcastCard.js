@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { PodcastsContext } from "../Contexts/PodcastContext";
 import { useNavigate } from 'react-router-dom';
 
-const PodcastCard = ({ title, author, image, description, id }) => {
+const PodcastCard = ({ title, author, image, summary, id }) => {
   const navigate = useNavigate()
   const { setSelectedPodcasts } = useContext(PodcastsContext);
   const handleSelectedPodcast = (selectedPodcast) => {
@@ -12,7 +12,7 @@ const PodcastCard = ({ title, author, image, description, id }) => {
     navigate(`/podcast/${selectedPodcast.id}`)
   };
   return (
-    <div className="card" onClick={() => {handleSelectedPodcast({image, title, author, description, id})}}>
+    <div className="card" onClick={() => {handleSelectedPodcast({image, title, author, summary, id})}}>
       <img src={image} alt="Podcast" className="card-image" />
       <div className="card-content">
         <h3 className="card-title">{title}</h3>

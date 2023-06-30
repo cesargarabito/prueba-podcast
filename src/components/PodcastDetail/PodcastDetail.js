@@ -18,9 +18,10 @@ const PodcastDetail = () => {
           `https://itunes.apple.com/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode&limit=20`
         )}`
       );
+      
       const parseData = JSON.parse(response.data.contents);
       const results = parseData.results;
-      console.log(results)
+      
       setEpisodes(results);
     } catch (error) {
       console.log(error);

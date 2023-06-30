@@ -45,7 +45,7 @@ function Main() {
               image={podcast["im:image"][0].label}
               title={podcast['im:name'].label}
               author={podcast["im:artist"].label}
-              description={podcast.summary.label}
+              summary={podcast.summary.label}
             />
           );
         })}
