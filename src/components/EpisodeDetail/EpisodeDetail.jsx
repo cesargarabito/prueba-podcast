@@ -8,14 +8,14 @@ const EpisodeDetail = () => {
   return (
     <div>
         <Header />
-    <div className="episode-detail-container">
+  
       
       <div className="episode-detail-content">
         <SideBar />
         <EpisodeView />
       </div>
     </div>
-    </div>
+   
   );
 }
 

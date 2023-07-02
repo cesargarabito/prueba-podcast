@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { PodcastsContext } from "../Contexts/PodcastContext";
 import { useNavigate } from "react-router-dom";
+import './EpisodeSection.css'
 
 const EpisodeSection = ({ episodes }) => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const EpisodeSection = ({ episodes }) => {
       .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   };
   return (
-    <div style={{ textAlign: "left" }}>
+    <div style={{ textAlign: "left" }} className="card-episode-section">
       <div style={{ display: "flex", alignItems: "center" }}>
         <h2>Episodios: </h2>
         <div

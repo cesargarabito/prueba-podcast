@@ -32,7 +32,7 @@ const EpisodeView = () => {
     <div className="episode-container">
       <h2 className="episode-title">{selectedEpisodes.title || localEpisode.title}</h2>
       <p className="episode-description">{selectedEpisodes.description || localEpisode.description}</p>
-      <audio controls>
+      <audio controls style={{ width: '100%'}}>
         <source src={selectedEpisodes.episodeUrl || localEpisode.episodeUrl} type="audio/mpeg" />
         Tu navegador no admite la reproducción de audio.
       </audio>

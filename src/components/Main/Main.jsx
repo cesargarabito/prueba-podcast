@@ -24,7 +24,7 @@ function Main() {
     fetchData();
   }, []);
   return (
-    <div style={{ margin: "2px" }}>
+    <div>
       <Header />
       <div className="filter-container">
         <div className="filter-text">{filteredPodcasts.length}</div>

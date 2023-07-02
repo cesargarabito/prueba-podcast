@@ -7,6 +7,7 @@ import EpisodeSection from "../EpisodesSection/EpisodeSection";
 import { useContext } from "react";
 import { PodcastsContext } from "../Contexts/PodcastContext";
 import Header from "../Header";
+import './PodcastDetail.css'
 
 const PodcastDetail = () => {
   let { podcastId } = useParams();
@@ -34,7 +35,7 @@ const PodcastDetail = () => {
   return (
     <div>
       <Header />
-      <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+      <div className="card-container-podcastdetail">
         <SideBar />
         <EpisodeSection episodes={episodes} />
       </div>

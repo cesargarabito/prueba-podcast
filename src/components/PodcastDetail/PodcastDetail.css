@@ -1,0 +1,6 @@
+.card-container-podcastdetail {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 30%);
+    justify-content: center;
+    gap: 5px;
+  }

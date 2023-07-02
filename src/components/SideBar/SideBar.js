@@ -34,7 +34,7 @@ const SideBar = () => {
   }, []);
 
   return (
-    <div className="card">
+    <div className="card-sidebar">
 
       <div onClick={() => {handleClick()}}>
       <div className="card-content-sidebar">
