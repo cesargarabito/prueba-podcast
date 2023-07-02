@@ -11,8 +11,9 @@ const EpisodeDetail = () => {
   
       
       <div className="episode-detail-content">
-        <SideBar />
-        <EpisodeView />
+        <div className="sidebar-container"><SideBar /></div>
+        <div className="episode-view-container"><EpisodeView /></div>
+        
       </div>
     </div>
    

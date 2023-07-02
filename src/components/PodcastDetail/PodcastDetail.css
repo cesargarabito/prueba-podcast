@@ -1,6 +1,19 @@
 .card-container-podcastdetail {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 30%);
-    justify-content: center;
-    gap: 5px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 1%;
+}
+
+.sidebar-container {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.episode-section-container {
+  flex: 2;
+  margin-left: 20px;
+  width: 50%;
+}
+
+

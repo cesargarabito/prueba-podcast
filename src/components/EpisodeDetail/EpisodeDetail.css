@@ -1,26 +1,21 @@
-.episode-detail-container {
+
+  .episode-detail-content{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .episode-detail-content {
-    display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    margin-left: 1%;
   }
   
-  /* Estilos para el espacio entre el SideBar y EpisodeView */
-  .side-bar {
+  .sidebar-container {
+    flex: 1;
     margin-right: 20px;
   }
   
-  .episode-view {
-    flex: 1;
+  .episode-view-container {
+    flex: 2;
+    margin-left: 20px;
+    width: 100%;
   }
   
-  /* Otros estilos personalizados según tus necesidades */
+ 
   

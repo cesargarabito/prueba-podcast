@@ -4,23 +4,23 @@ import { PodcastsContext } from "../Contexts/PodcastContext";
 import { useNavigate } from "react-router-dom";
 import './EpisodeSection.css'
 
-const EpisodeSection = ({ episodes }) => {
+const EpisodeSection = ({ episodes }:any) => {
   const navigate = useNavigate();
   const { setSelectedEpisodes } = useContext(PodcastsContext);
-  const handleSelectedEpisode = (selectedEpisode) => {
+  const handleSelectedEpisode = (selectedEpisode: any) => {
     setSelectedEpisodes(selectedEpisode);
     navigate(
       `/podcast/${selectedEpisode.podcastId}/episode/${selectedEpisode.id}`
     );
   };
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const year = date.getFullYear();
     return `${month}/${day}/${year}`;
   };
-  const formatDuration = (durationInMillis) => {
+  const formatDuration = (durationInMillis: number) => {
     const totalSeconds = Math.floor(durationInMillis / 1000);
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -31,7 +31,7 @@ const EpisodeSection = ({ episodes }) => {
   };
   return (
     <div style={{ textAlign: "left" }} className="card-episode-section">
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div style={{ display: "flex", textAlign: 'left', alignItems: 'center', gap: '5px'}}>
         <h2>Episodios: </h2>
         <div
           style={{
@@ -39,6 +39,7 @@ const EpisodeSection = ({ episodes }) => {
             color: "white",
             borderRadius: "4px",
             padding: "8px",
+            height: '100%'
           }}
         >
           {episodes.length}
@@ -48,13 +49,13 @@ const EpisodeSection = ({ episodes }) => {
         <table style={{ borderCollapse: "collapse", overflowX: "auto" }}>
           <thead>
             <tr>
-              <th>Title</th>
-              <th style={{ marginRight: "20px" }}>Date</th>
+              <th style={{ marginRight: '40px'}}>Title</th>
+              <th style={{ padding: '16px' }}>Date</th>
               <th>Duration</th>
             </tr>
           </thead>
           <tbody>
-            {episodes.map((episode, index) => (
+            {episodes.map((episode: any, index: number) => (
               <tr
                 key={index}
                 style={{
@@ -72,11 +73,11 @@ const EpisodeSection = ({ episodes }) => {
                       episodeUrl: episode.episodeUrl
                     });
                   }}
-                  style={{ color: "navy", cursor: 'pointer' }}
+                  style={{ color: "navy", cursor: 'pointer', marginRight: '40px' }}
                 >
                   {episode.trackName}
                 </td>
-                <td style={{ marginRight: "20px" }}>
+                <td style={{ marginRight: "50%" }}>
                   {formatDate(episode.releaseDate)}
                 </td>
                 <td>{formatDuration(episode.trackTimeMillis)}</td>

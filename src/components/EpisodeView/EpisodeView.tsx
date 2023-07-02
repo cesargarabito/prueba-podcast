@@ -7,7 +7,7 @@ import "./EpisodeView.css";
 
 const EpisodeView = () => {
   const { selectedEpisodes } = useContext(PodcastsContext);
-  const [localEpisode, setLocalEpisode] = useState({});
+  const [localEpisode, setLocalEpisode] = useState<{ [key: string]: any }>({});
 
   useEffect(() => {
     

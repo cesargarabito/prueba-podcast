@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, 18rem);
     justify-content: center;
-    gap: 5px;
+    grid-gap: 2rem;
   }
   .filter-container {
     display: flex;

@@ -5,10 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import React from "react";
 
+
 const SideBar = () => {
   const navigate = useNavigate();
   const { selectedPodcasts } = useContext(PodcastsContext);
-  const [localPodcast, setLocalPodcast] = useState({});
+  const [localPodcast, setLocalPodcast] = useState<{ [key: string]: any }>({});
   let { podcastId } = useParams();
   const handleClick = () => {
     navigate(`/podcast/${podcastId}`)
