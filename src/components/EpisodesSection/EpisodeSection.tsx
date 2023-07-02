@@ -2,9 +2,9 @@ import React from "react";
 import { useContext } from "react";
 import { PodcastsContext } from "../Contexts/PodcastContext";
 import { useNavigate } from "react-router-dom";
-import './EpisodeSection.css'
+import "./EpisodeSection.css";
 
-const EpisodeSection = ({ episodes }:any) => {
+const EpisodeSection = ({ episodes }: any) => {
   const navigate = useNavigate();
   const { setSelectedEpisodes } = useContext(PodcastsContext);
   const handleSelectedEpisode = (selectedEpisode: any) => {
@@ -31,7 +31,14 @@ const EpisodeSection = ({ episodes }:any) => {
   };
   return (
     <div style={{ textAlign: "left" }} className="card-episode-section">
-      <div style={{ display: "flex", textAlign: 'left', alignItems: 'center', gap: '5px'}}>
+      <div
+        style={{
+          display: "flex",
+          textAlign: "left",
+          alignItems: "center",
+          gap: "5px",
+        }}
+      >
         <h2>Episodios: </h2>
         <div
           style={{
@@ -39,7 +46,7 @@ const EpisodeSection = ({ episodes }:any) => {
             color: "white",
             borderRadius: "4px",
             padding: "8px",
-            height: '100%'
+            height: "100%",
           }}
         >
           {episodes.length}
@@ -49,8 +56,8 @@ const EpisodeSection = ({ episodes }:any) => {
         <table style={{ borderCollapse: "collapse", overflowX: "auto" }}>
           <thead>
             <tr>
-              <th style={{ marginRight: '40px'}}>Title</th>
-              <th style={{ padding: '16px' }}>Date</th>
+              <th style={{ marginRight: "40px" }}>Title</th>
+              <th style={{ padding: "16px" }}>Date</th>
               <th>Duration</th>
             </tr>
           </thead>
@@ -70,14 +77,18 @@ const EpisodeSection = ({ episodes }:any) => {
                       id: episode.trackId,
                       title: episode.trackName,
                       description: episode.description,
-                      episodeUrl: episode.episodeUrl
+                      episodeUrl: episode.episodeUrl,
                     });
                   }}
-                  style={{ color: "navy", cursor: 'pointer', marginRight: '40px' }}
+                  style={{
+                    color: "navy",
+                    cursor: "pointer",
+                    marginRight: "40px",
+                  }}
                 >
                   {episode.trackName}
                 </td>
-                <td style={{ marginRight: "50%" }}>
+                <td style={{ padding: "16px" }}>
                   {formatDate(episode.releaseDate)}
                 </td>
                 <td>{formatDuration(episode.trackTimeMillis)}</td>

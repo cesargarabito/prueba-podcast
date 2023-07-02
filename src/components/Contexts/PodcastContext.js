@@ -5,9 +5,9 @@ export const PodcastsContext = createContext();
 export const PodcastsProvider = ({ children }) => {
   const [podcasts, setPodcasts] = useState([]);
   const [selectedPodcasts, setSelectedPodcasts] = useState({});
-  const [ episodes, setEpisodes ] = useState([]);
+  const [episodes, setEpisodes] = useState([]);
   const [selectedEpisodes, setSelectedEpisodes] = useState({});
-  
+
   const fetchData = () => {
     fetch(
       "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json"
@@ -25,8 +25,8 @@ export const PodcastsProvider = ({ children }) => {
     episodes,
     setEpisodes,
     selectedEpisodes,
-    setSelectedEpisodes
-  }
+    setSelectedEpisodes,
+  };
 
   return (
     <PodcastsContext.Provider value={values}>
