@@ -30,16 +30,9 @@ const EpisodeSection = ({ episodes }: any) => {
       .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   };
   return (
-    <div style={{ textAlign: "left" }} className="card-episode-section">
-      <div
-        style={{
-          display: "flex",
-          textAlign: "left",
-          alignItems: "center",
-          gap: "5px",
-        }}
-      >
-        <h2>Episodios: </h2>
+    <div style={{ gap: "5px" }}>
+      <div className="upper-episode">
+        <h2 style={{ margin: '0px'}}>Episodios: </h2>
         <div
           style={{
             backgroundColor: "navy",
@@ -52,50 +45,60 @@ const EpisodeSection = ({ episodes }: any) => {
           {episodes.length}
         </div>
       </div>
-      <div>
-        <table style={{ borderCollapse: "collapse", overflowX: "auto" }}>
-          <thead>
-            <tr>
-              <th style={{ marginRight: "40px" }}>Title</th>
-              <th style={{ padding: "16px" }}>Date</th>
-              <th>Duration</th>
-            </tr>
-          </thead>
-          <tbody>
-            {episodes.map((episode: any, index: number) => (
-              <tr
-                key={index}
-                style={{
-                  backgroundColor:
-                    index % 2 === 0 ? "rgba(128, 128, 128, 0.2)" : "white",
-                }}
-              >
-                <td
-                  onClick={() => {
-                    handleSelectedEpisode({
-                      podcastId: episode.collectionId,
-                      id: episode.trackId,
-                      title: episode.trackName,
-                      description: episode.description,
-                      episodeUrl: episode.episodeUrl,
-                    });
-                  }}
+      <div style={{ textAlign: "left" }} className="card-episode-section">
+        <div>
+          <table
+            style={{
+              borderCollapse: "collapse",
+              overflowX: "auto",
+              width: "100%",
+            }}
+          >
+            <thead>
+              <tr>
+                <th style={{ padding: "16px" }}>Title</th>
+                <th style={{ padding: "16px" }}>Date</th>
+                <th style={{ padding: "16px" }}>Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+              {episodes.map((episode: any, index: number) => (
+                <tr
+                  key={index}
                   style={{
-                    color: "navy",
-                    cursor: "pointer",
-                    marginRight: "40px",
+                    backgroundColor:
+                      index % 2 === 0 ? "rgba(128, 128, 128, 0.2)" : "white",
                   }}
                 >
-                  {episode.trackName}
-                </td>
-                <td style={{ padding: "16px" }}>
-                  {formatDate(episode.releaseDate)}
-                </td>
-                <td>{formatDuration(episode.trackTimeMillis)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                  <td
+                    onClick={() => {
+                      handleSelectedEpisode({
+                        podcastId: episode.collectionId,
+                        id: episode.trackId,
+                        title: episode.trackName,
+                        description: episode.description,
+                        episodeUrl: episode.episodeUrl,
+                      });
+                    }}
+                    style={{
+                      color: "navy",
+                      cursor: "pointer",
+                      padding: "16px",
+                    }}
+                  >
+                    {episode.trackName}
+                  </td>
+                  <td style={{ padding: "16px" }}>
+                    {formatDate(episode.releaseDate)}
+                  </td>
+                  <td style={{ padding: "16px" }}>
+                    {formatDuration(episode.trackTimeMillis)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

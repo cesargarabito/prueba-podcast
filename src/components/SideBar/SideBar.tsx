@@ -50,7 +50,8 @@ const SideBar = () => {
               width: "90%",
               height: "1px",
               border: "none",
-              background: "gray",
+              backgroundColor: "gray",
+              opacity: '0.5'
             }}
           />
 
@@ -67,10 +68,11 @@ const SideBar = () => {
               height: "1px",
               border: "none",
               background: "gray",
+              opacity: '0.5'
             }}
           />
         </div>
-        <div>
+        <div style={{ inlineSize: '150px', overflowWrap: 'break-word'}}>
           <h4 style={{ textAlign: "left" }}>Description:</h4>
           <p style={{ textAlign: "left", fontStyle: "italic", opacity: 0.5 }}>
             {selectedPodcasts.summary || localPodcast.summary}

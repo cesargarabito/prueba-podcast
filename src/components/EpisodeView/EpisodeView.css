@@ -20,6 +20,8 @@
   .episode-description {
     font-style: italic;
     margin-bottom: 10px;
+    inline-size: none;
+    overflow-wrap: break-word;
   }
   
   

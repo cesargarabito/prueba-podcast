@@ -22,7 +22,7 @@ function Main() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
   return (
     <div>
       <Header />

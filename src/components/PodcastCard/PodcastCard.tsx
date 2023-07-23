@@ -34,7 +34,6 @@ const PodcastCard = ({ title, author, image, summary, id }: PodcastCardProps) =>
           <span style={{ fontStyle: "italic", opacity: 0.5 }}>Author:</span>{" "}
           {author}
         </p>
-        <p className="card-description"></p>
       </div>
     </div>
   );

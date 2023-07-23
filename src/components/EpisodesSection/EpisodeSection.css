@@ -1,5 +1,5 @@
 .card-episode-section {
-    width: 90%;
+    width: 95%;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -9,4 +9,16 @@
     align-items: left;
     justify-content: center;
     gap: 5px;
+  }
+  .upper-episode{
+    border-radius: 8px;
+    margin-bottom: 5px;
+    padding: 16px;
+    width: 95%;
+    display: flex;
+          text-align: left;
+          align-items: center;
+          gap: 5px;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+          background-color: #fff;
   }

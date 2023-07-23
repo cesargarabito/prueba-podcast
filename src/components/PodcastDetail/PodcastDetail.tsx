@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import React from "react";
+
 import SideBar from "../SideBar/SideBar";
 import EpisodeSection from "../EpisodesSection/EpisodeSection";
 import { useContext } from "react";
@@ -36,7 +36,7 @@ const PodcastDetail = () => {
 
   useEffect(() => {
     episodesList();
-  }, [podcastId]);
+  });
 
   return (
     <div>
