@@ -21,13 +21,15 @@ const PodcastCard = ({ title, author, image, summary, id }: PodcastCardProps) =>
     navigate(`/podcast/${selectedPodcast.id}`);
   };
   return (
+    <div className="all-container" onClick={() => {
+      handleSelectedPodcast({ image, title, author, summary, id });
+    }}>
+      <img src={image} alt="Podcast" className="card-image" />
     <div
       className="card"
-      onClick={() => {
-        handleSelectedPodcast({ image, title, author, summary, id });
-      }}
+      
     >
-      <img src={image} alt="Podcast" className="card-image" />
+      
       <div className="card-content">
         <h3 className="card-title">{title}</h3>
         <p className="card-author">
@@ -35,6 +37,7 @@ const PodcastCard = ({ title, author, image, summary, id }: PodcastCardProps) =>
           {author}
         </p>
       </div>
+    </div>
     </div>
   );
 };
