@@ -2,38 +2,42 @@ import React from "react";
 import { useContext } from "react";
 import { PodcastsContext } from "../Contexts/PodcastContext";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import "./EpisodeView.css";
+import { PodcastsState } from "../../store/reducers";
+import { SelectedEpisodes } from "../../store/actionTypes";
 
 const EpisodeView = () => {
-  const { selectedEpisodes } = useContext(PodcastsContext);
+  //const { selectedEpisodes } = useContext(PodcastsContext);
+  const selectedEpisode = useSelector<PodcastsState>((state) => state.selectedEpisodes) as SelectedEpisodes;
   const [localEpisode, setLocalEpisode] = useState<{ [key: string]: any }>({});
 
   useEffect(() => {
     
-    if (Object.keys(selectedEpisodes).length) {
+    if (Object.keys(selectedEpisode).length && selectedEpisode.id !== 0) {
       localStorage.setItem(
-        "selectedEpisodes",
-        JSON.stringify(selectedEpisodes)
+        "selectedEpisode",
+        JSON.stringify(selectedEpisode)
       );
     }
-  }, [selectedEpisodes]);
+  }, [selectedEpisode]);
 
   useEffect(() => {
     
-    const storedSelectedEpisodes = localStorage.getItem("selectedEpisodes");
+    const storedSelectedEpisodes = localStorage.getItem("selectedEpisode");
 
     if (storedSelectedEpisodes) {
       setLocalEpisode(JSON.parse(storedSelectedEpisodes));
     }
   }, []);
-
+console.log(localEpisode.title)
   return (
     <div className="episode-container">
-      <h2 className="episode-title">{selectedEpisodes.title || localEpisode.title}</h2>
-      <p className="episode-description">{selectedEpisodes.description || localEpisode.description}</p>
+      <h2 className="episode-title">{selectedEpisode.title || localEpisode.title}</h2>
+      <p className="episode-description">{selectedEpisode.description || localEpisode.description}</p>
       <audio controls style={{ width: '100%'}}>
-        <source src={selectedEpisodes.episodeUrl || localEpisode.episodeUrl} type="audio/mpeg" />
+        <source src={selectedEpisode.episodeUrl || localEpisode.episodeUrl} type="audio/mpeg" />
         Tu navegador no admite la reproducción de audio.
       </audio>
     </div>

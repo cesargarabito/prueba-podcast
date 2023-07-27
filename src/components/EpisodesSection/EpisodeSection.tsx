@@ -3,12 +3,16 @@ import { useContext } from "react";
 import { PodcastsContext } from "../Contexts/PodcastContext";
 import { useNavigate } from "react-router-dom";
 import "./EpisodeSection.css";
+import { PodcastsActionTypes } from "../../store/actionTypes";
+import { useDispatch } from "react-redux";
 
 const EpisodeSection = ({ episodes }: any) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { setSelectedEpisodes } = useContext(PodcastsContext);
+  //const { setSelectedEpisodes } = useContext(PodcastsContext);
   const handleSelectedEpisode = (selectedEpisode: any) => {
-    setSelectedEpisodes(selectedEpisode);
+    //setSelectedEpisodes(selectedEpisode);
+    dispatch({ type: PodcastsActionTypes.SET_SELECTED_EPISODES, payload: selectedEpisode });
     navigate(
       `/podcast/${selectedEpisode.podcastId}/episode/${selectedEpisode.id}`
     );

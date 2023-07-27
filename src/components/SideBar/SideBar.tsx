@@ -3,29 +3,36 @@ import { PodcastsContext } from "../Contexts/PodcastContext";
 import "./SideBar.css";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import React from "react";
+import { useSelector } from "react-redux/es/exports";
+import { PodcastsState } from "../../store/reducers";
+import { SelectedPodcasts } from "../../store/actionTypes";
+
 
 const SideBar = () => {
   const navigate = useNavigate();
-  const { selectedPodcasts } = useContext(PodcastsContext);
-  const [localPodcast, setLocalPodcast] = useState<{ [key: string]: any }>({});
+  //const { selectedPodcasts } = useContext(PodcastsContext);
+  // const selectedPodcasts = useSelector< PodcastsState>(
+  //   (state) => state.selectedPodcasts
+  // );
+  const selectedPodcast = useSelector<PodcastsState>(
+    (state) => state.selectedPodcasts
+  ) as SelectedPodcasts;
+
+  const [localPodcast, setLocalPodcast] = useState<{ [key: string]: string | undefined }>({});
   let { podcastId } = useParams();
   const handleClick = () => {
     navigate(`/podcast/${podcastId}`);
   };
 
   useEffect(() => {
-    if (Object.keys(selectedPodcasts).length) {
-      localStorage.setItem(
-        "selectedPodcasts",
-        JSON.stringify(selectedPodcasts)
-      );
+    if (Object.keys(selectedPodcast).length && selectedPodcast.id !== 0) {
+      localStorage.setItem("selectedPodcasts", JSON.stringify(selectedPodcast));
     }
-  }, [selectedPodcasts]);
+  }, [selectedPodcast]);
 
   useEffect(() => {
     const storedSelectedPodcasts = localStorage.getItem("selectedPodcasts");
-
+    console.log(storedSelectedPodcasts);
     if (storedSelectedPodcasts) {
       setLocalPodcast(JSON.parse(storedSelectedPodcasts));
     }
@@ -37,10 +44,11 @@ const SideBar = () => {
         onClick={() => {
           handleClick();
         }}
+        style={{ width: "75%" }}
       >
         <div className="card-content-sidebar">
           <img
-            src={selectedPodcasts.image || localPodcast.image}
+            src={selectedPodcast.image || localPodcast.image}
             alt="Podcast"
             className="card-image-sidebar"
           />
@@ -51,15 +59,15 @@ const SideBar = () => {
               height: "1px",
               border: "none",
               backgroundColor: "gray",
-              opacity: '0.5'
+              opacity: "0.5",
             }}
           />
 
           <h3 style={{ marginBottom: "0" }} className="card-title-sidebar">
-            {selectedPodcasts.title || localPodcast.title}
+            {selectedPodcast.title || localPodcast.title}
           </h3>
           <p style={{ fontStyle: "italic", opacity: 0.5, marginTop: "0" }}>
-            by {selectedPodcasts.author || localPodcast.author}
+            by {selectedPodcast.author || localPodcast.author}
           </p>
 
           <hr
@@ -68,14 +76,14 @@ const SideBar = () => {
               height: "1px",
               border: "none",
               background: "gray",
-              opacity: '0.5'
+              opacity: "0.5",
             }}
           />
         </div>
-        <div style={{ inlineSize: '150px', overflowWrap: 'break-word'}}>
+        <div style={{ inlineSize: "140px", overflowWrap: "break-word" }}>
           <h4 style={{ textAlign: "left" }}>Description:</h4>
           <p style={{ textAlign: "left", fontStyle: "italic", opacity: 0.5 }}>
-            {selectedPodcasts.summary || localPodcast.summary}
+            {selectedPodcast.summary || localPodcast.summary}
           </p>
         </div>
       </div>
