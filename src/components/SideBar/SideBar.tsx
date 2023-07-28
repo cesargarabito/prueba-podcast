@@ -32,7 +32,7 @@ const SideBar = () => {
 
   useEffect(() => {
     const storedSelectedPodcasts = localStorage.getItem("selectedPodcasts");
-    console.log(storedSelectedPodcasts);
+    
     if (storedSelectedPodcasts) {
       setLocalPodcast(JSON.parse(storedSelectedPodcasts));
     }
@@ -80,7 +80,7 @@ const SideBar = () => {
             }}
           />
         </div>
-        <div style={{ inlineSize: "140px", overflowWrap: "break-word" }}>
+        <div style={{ display: 'flex', flexDirection: 'column', overflowWrap: "break-word" }}>
           <h4 style={{ textAlign: "left" }}>Description:</h4>
           <p style={{ textAlign: "left", fontStyle: "italic", opacity: 0.5 }}>
             {selectedPodcast.summary || localPodcast.summary}

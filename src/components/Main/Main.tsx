@@ -7,6 +7,7 @@ import Header from "../Header";
 import { useDispatch, useSelector } from "react-redux";
 import { Podcast, PodcastsActionTypes } from "../../store/actionTypes";
 import { PodcastsState } from "../../store/reducers";
+import Loader from "../Loader/Loader";
 
 
 const Main: React.FC = () => {
@@ -14,6 +15,7 @@ const Main: React.FC = () => {
   //const { podcasts, fetchData } = useContext(PodcastsContext);
   const podcasts = useSelector<PodcastsState, Podcast[]>((state) => state.podcasts);
   const [filterText, setFilterText] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleFilterChange = (event: any) => {
     setFilterText(event.target.value);
@@ -25,9 +27,8 @@ useEffect(() => {
       fetch("https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json")
         .then((response) => response.json())
         .then((data) => {
-        console.log(data.feed.entry)
         dispatch({ type: PodcastsActionTypes.SET_PODCASTS, payload: data.feed.entry })});
-        
+        setIsLoading(false);
     };
 
     fetchData();
@@ -57,7 +58,11 @@ useEffect(() => {
         />
       </div>
       <div className="card-container">
-        {filteredPodcasts?.map((podcast: any, index: number) => {
+
+        {isLoading ? (
+          <Loader />
+        ) :
+        filteredPodcasts?.map((podcast: any, index: number) => {
           return (
             <PodcastCard
               key={index}

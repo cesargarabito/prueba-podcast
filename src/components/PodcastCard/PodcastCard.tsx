@@ -27,7 +27,7 @@ const PodcastCard = ({
   const navigate = useNavigate();
   //const { setSelectedPodcasts } = useContext(PodcastsContext);
   const handleSelectedPodcast = (selectedPodcast: any) => {
-    debugger
+    
     //setSelectedPodcasts(selectedPodcast);
     dispatch({ type: PodcastsActionTypes.SET_SELECTED_PODCASTS, payload: selectedPodcast });
     navigate(`/podcast/${selectedPodcast.id}`);
