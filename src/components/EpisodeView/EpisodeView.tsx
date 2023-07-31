@@ -1,15 +1,10 @@
-import React from "react";
-import { useContext } from "react";
-import { PodcastsContext } from "../Contexts/PodcastContext";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-
 import "./EpisodeView.css";
 import { PodcastsState } from "../../store/reducers";
 import { SelectedEpisodes } from "../../store/actionTypes";
 
 const EpisodeView = () => {
-  //const { selectedEpisodes } = useContext(PodcastsContext);
   const selectedEpisode = useSelector<PodcastsState>(
     (state) => state.selectedEpisodes
   ) as SelectedEpisodes;

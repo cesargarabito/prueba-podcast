@@ -1,17 +1,23 @@
-import React from "react";
-import { useContext } from "react";
-import { PodcastsContext } from "../Contexts/PodcastContext";
+
 import { useNavigate } from "react-router-dom";
 import "./EpisodeSection.css";
 import { PodcastsActionTypes } from "../../store/actionTypes";
 import { useDispatch } from "react-redux";
 
+interface SelectedEpisode {
+  id: number;
+  podcastId: number;
+  title: string;
+  description: string;
+  episodeUrl: string;
+}
+
 const EpisodeSection = ({ episodes }: any) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  //const { setSelectedEpisodes } = useContext(PodcastsContext);
-  const handleSelectedEpisode = (selectedEpisode: any) => {
-    //setSelectedEpisodes(selectedEpisode);
+ 
+  const handleSelectedEpisode = (selectedEpisode: SelectedEpisode) => {
+    
     dispatch({ type: PodcastsActionTypes.SET_SELECTED_EPISODES, payload: selectedEpisode });
     navigate(
       `/podcast/${selectedEpisode.podcastId}/episode/${selectedEpisode.id}`

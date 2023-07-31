@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Grid } from '@mui/material';
 import SideBar from '../SideBar/SideBar';
 import EpisodeView from '../EpisodeView/EpisodeView';

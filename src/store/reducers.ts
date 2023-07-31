@@ -1,11 +1,11 @@
-// reducers.ts
+
 import { PodcastsAction, PodcastsActionTypes, Podcast, Episode, SelectedPodcasts, SelectedEpisodes } from "./actionTypes";
 
 export interface PodcastsState {
   podcasts: Podcast[];
-  selectedPodcasts: SelectedPodcasts; // Define el tipo para el objeto selectedPodcasts si es necesario.
+  selectedPodcasts: SelectedPodcasts; 
   episodes: Episode[];
-  selectedEpisodes: SelectedEpisodes; // Define el tipo para el objeto selectedEpisodes si es necesario.
+  selectedEpisodes: SelectedEpisodes; 
 }
 
 const initialState: PodcastsState = {

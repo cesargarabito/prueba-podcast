@@ -1,11 +1,6 @@
-import React from "react";
 import "./PodcastCard.css";
-import { useContext } from "react";
-import { PodcastsContext } from "../Contexts/PodcastContext";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { Podcast } from "../../store/actionTypes";
-import { SetPodcastsAction } from "../../store/actionTypes";
 import { PodcastsActionTypes } from "../../store/actionTypes";
 
 type PodcastCardProps = {
@@ -25,11 +20,12 @@ const PodcastCard = ({
 }: PodcastCardProps) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  //const { setSelectedPodcasts } = useContext(PodcastsContext);
+
   const handleSelectedPodcast = (selectedPodcast: any) => {
-    
-    //setSelectedPodcasts(selectedPodcast);
-    dispatch({ type: PodcastsActionTypes.SET_SELECTED_PODCASTS, payload: selectedPodcast });
+    dispatch({
+      type: PodcastsActionTypes.SET_SELECTED_PODCASTS,
+      payload: selectedPodcast,
+    });
     navigate(`/podcast/${selectedPodcast.id}`);
   };
   return (

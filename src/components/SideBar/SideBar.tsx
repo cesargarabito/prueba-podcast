@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import { PodcastsContext } from "../Contexts/PodcastContext";
+import { useEffect, useState } from "react";
+
 import "./SideBar.css";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -7,18 +7,16 @@ import { useSelector } from "react-redux/es/exports";
 import { PodcastsState } from "../../store/reducers";
 import { SelectedPodcasts } from "../../store/actionTypes";
 
-
 const SideBar = () => {
   const navigate = useNavigate();
-  //const { selectedPodcasts } = useContext(PodcastsContext);
-  // const selectedPodcasts = useSelector< PodcastsState>(
-  //   (state) => state.selectedPodcasts
-  // );
+
   const selectedPodcast = useSelector<PodcastsState>(
     (state) => state.selectedPodcasts
   ) as SelectedPodcasts;
 
-  const [localPodcast, setLocalPodcast] = useState<{ [key: string]: string | undefined }>({});
+  const [localPodcast, setLocalPodcast] = useState<{
+    [key: string]: string | undefined;
+  }>({});
   let { podcastId } = useParams();
   const handleClick = () => {
     navigate(`/podcast/${podcastId}`);
@@ -32,7 +30,7 @@ const SideBar = () => {
 
   useEffect(() => {
     const storedSelectedPodcasts = localStorage.getItem("selectedPodcasts");
-    
+
     if (storedSelectedPodcasts) {
       setLocalPodcast(JSON.parse(storedSelectedPodcasts));
     }
@@ -80,7 +78,13 @@ const SideBar = () => {
             }}
           />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', overflowWrap: "break-word" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            overflowWrap: "break-word",
+          }}
+        >
           <h4 style={{ textAlign: "left" }}>Description:</h4>
           <p style={{ textAlign: "left", fontStyle: "italic", opacity: 0.5 }}>
             {selectedPodcast.summary || localPodcast.summary}

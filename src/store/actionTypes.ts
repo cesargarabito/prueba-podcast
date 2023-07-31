@@ -1,4 +1,4 @@
-// actionTypes.ts
+
 export enum PodcastsActionTypes {
     SET_PODCASTS = "SET_PODCASTS",
     SET_SELECTED_PODCASTS = "SET_SELECTED_PODCASTS",
@@ -40,7 +40,7 @@ export enum PodcastsActionTypes {
   
   export interface SetSelectedPodcastsAction {
     type: PodcastsActionTypes.SET_SELECTED_PODCASTS;
-    payload: SelectedPodcasts; // Define el tipo para el objeto selectedPodcasts si es necesario.
+    payload: SelectedPodcasts; 
   }
   
   export interface SetEpisodesAction {
@@ -50,7 +50,7 @@ export enum PodcastsActionTypes {
   
   export interface SetSelectedEpisodesAction {
     type: PodcastsActionTypes.SET_SELECTED_EPISODES;
-    payload: SelectedEpisodes; // Define el tipo para el objeto selectedEpisodes si es necesario.
+    payload: SelectedEpisodes; 
   }
   
   export type PodcastsAction =
